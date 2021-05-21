@@ -1,0 +1,317 @@
+@media (max-width: 1200px) /** делаем правила когда ширина экрана менее 1200px **/
+    .menu /** работаем с верхним меню (афиксированном в верхней части) чтобы буквы не переходили во второй ряд **/
+        &_item
+            padding-right: 20px /** уменьшаем отступы, чтобы текст меню был без переносов **/
+        &_link
+            font-size: 13px /** уменьшаем текст, чтобы текст меню был без переносов **/
+    .promo
+        &_header
+            font-size: 50px /** уменьшаем размер текста чтобы было локаничнее на маленьком экране **/
+    .reasons 
+        &_block /** так как у нас было прописао наследование классов, надо все прописать так же с этим наследованием **/
+            align-items: flex-start /** выравниваем кружки по верху а не по центру **/
+        &_descr
+            width: 300px /** уменьшаем ширину блока для того чтобы кружки слева не были овальными **/
+    .mobile
+        &_item
+            width: 290px /** уменьшаем ширину блоков чтобы между ними были отступы и они лучше влазали в экран **/
+            &_subtitle
+                font-size: 22px /** уменьшаем размер текста в блоке для того чтобы он не касался границ блока **/
+    .choice 
+        padding: 55px 0
+        min-height: 840px
+    .require
+        br 
+            display: none /** убираем перенос строк, чтобы текст занимал оптимальное пространство **/
+    .footer
+        &_wrapper > div /** чтобы блоки не налазили друг на друга **/
+            width: 50% /** сначала делаем их чирину по 50%, чтобы средний блок занимал половину экрана **/
+            &:nth-child(1) /** первому и третьему блокам делаем ширину по 25% чтобы все 3 блока влазили в строку **/
+                width: 25%
+            &:nth-child(3)
+                width: 25%
+                display: flex 
+                justify-content: flex-end
+        &_mobile
+            display: flex /** для того чтобы flex сохранился как и раньше **/
+            a 
+                margin: 0 3px /** делаем отступы между картинками **/
+                img 
+                    width: 100% /** делаем ширину картинок 100% чтобы размеры уменьшились и картинки встали в линию **/
+@media (max-width: 991px) /** делаем правила когда ширина экрана менее 991px **/
+    .menu /** изменяем верхнюю менюшку чтобы слова не перескакивали на вторую строку **/
+        &_item
+            padding-right: 10px
+        &_link
+            font-size: 10px
+    .subheader
+        &_logo
+            img
+                width: 100% /** уменьшаем размер картинки и вписываем ее в размер блока **/
+        &_official
+            font-size: 12px
+        &_phone /** уменьшаем размер номера телефона в шапке **/
+            font-size: 18px
+        &_btn
+            margin-top: 21px
+            height: 40px
+            width: 100%
+    .promo
+        &_header
+            font-size: 40px /** уменьшаем размер текста чтобы было локаничнее на маленьком экране **/
+        &_subheader
+            font-size: 30px
+    .reasons 
+        &_block /** так как у нас было прописао наследование классов, надо все прописать так же с этим наследованием **/
+            flex-direction: column
+            align-items: center /** выравниваем кружки по верху а не по центру **/
+        &_descr
+            width: 300px /** уменьшаем ширину блока для того чтобы кружки слева не были овальными **/
+        &_subtitle
+            margin-top: 20px
+    .choice 
+        min-height: 800px /** уменьшаем высоту блока **/
+        &_img 
+            width: 100% /** делаем так чтобы машинка влазила целиком **/
+    .world
+        min-height: 600px
+    .footer
+        &_wrapper
+            flex-wrap: wrap
+        &_wrapper > div 
+            width: 100%
+            display: flex 
+            justify-content: center
+            margin-bottom: 20px
+            &:nth-child(1)
+                width: 100%
+            &:nth-child(3)
+                width: 100%
+                justify-content: center
+@media (max-width: 767px)
+    .menu
+        position: fixed
+        flex-direction: column // располагаем элементы меню по вертикали
+        justify-content: center
+        align-items: center
+        top: 0
+        left: -100% // мы прячем меню в левую часть экрана и оно выезжает на половину крана когда класс меняется на active
+        width: 50%
+        height: 100vh /** по высоте элемент занимает 100% видимого диапазона **/
+        padding: 20px 15px
+        background-color: rgba(0,0,0, .8) // делаем полупрозрачный фон для меню с прозрачностью 80%
+        transition: 0.6s all // делаем плавное появление меню
+        &_active
+            left: 0
+        &_item
+            padding-right: 0
+            border: none
+            margin: 10px 0
+        &_link
+            font-size: 20px
+    .hamburger // позиционируем три черточки гамбургера
+        display: block
+        position: absolute
+        right: 10px
+        top: 50%
+        transform: translateY(-50%) // выравниваем по середине по высоте блок
+        width: 30px
+        span // рисуем три черточки
+            display: block
+            height: 2px
+            width: 100%
+            background-color: #fff
+            margin-bottom: 5px
+            transition: 0.5s all // делаем плавное трансформирование черточек при нахатии
+        &_active // трансформируем черточки при нажатии на них
+            span
+                margin-bottom: -2px
+                &:nth-child(1)
+                    transform: rotate(45deg)
+                &:nth-child(2)
+                    display: none
+                &:nth-child(3)
+                    transform: rotate(-45deg)
+    .xs-hidden
+        display: none
+    .xs-visible
+        display: block
+    .subheader
+        &_phone
+            margin-top: 10px
+            color: #ffffff
+            font-size: 16px
+            font-weight: 400
+            text-transform: uppercase
+            text-align: center
+        &_btn
+            display: block
+            width: 200px
+            height: 40px
+            margin: 0 auto
+            margin-top: 10px
+    .promo
+        &_header
+            font-size: 40px /** уменьшаем размер текста чтобы было локаничнее на маленьком экране **/
+            line-height: 50px // уменьшаем межстрочный отступ
+        &_subheader
+            font-size: 30px
+@media (max-width: 575px)
+    nav 
+        height: 30px
+    header 
+        height: 30px
+    .title 
+        font-size: 16px
+        margin-top: 15px
+        line-height: 16px
+    .subtitle 
+        font-size: 14px
+        line-height: 21px
+        margin-top: 30px
+    .subheader
+        height: 60px
+        top: 30px
+        &_official
+            display: none
+        &_logo
+            margin-top: 17px
+        &_phone
+            font-size: 12px
+            font-weight: 400
+            margin-top: 7px
+        &_btn
+            width: 110px
+            height: 22px
+            font-size: 10px  
+            margin-top: 11px
+            &:hover
+                background-image: linear-gradient(to top, $main-color 0%, #4ce2ff 100%)
+    .promo 
+        min-height: 400px
+        padding: 93px 0 35px 0
+        &_descr
+            display: none
+        &_header
+            font-size: 30px
+            padding: 0 24px
+            line-height: 35px
+        &_subheader
+            font-size: 20px
+            margin-top: 33px
+            padding: 0 10px
+            line-height: 30px
+        &_btn 
+            width: 210px
+            height: 50px
+            margin-top: 72px
+            font-size: 16px
+            &:hover
+                background-image: linear-gradient(to top, $main-color 0%, #4ce2ff 100%)
+    .menu 
+        width: 85%
+        &_item // делаем отступы и ширину 100% чтобы было удобно при использовании пальца
+            width: 100%
+            text-align: center
+            padding: 5px 0
+        &_link
+            display: block // так как ссылка изначально строчный элемент мы ее делаем блочным чтобы если мы нажмем пальцем не точно в текст ссылка все равно сработала
+    .reasons
+        padding: 22px 0 36px 0
+        &_block 
+            margin-top: 26px
+        &_round 
+            width: 100px
+            height: 100px
+        &_descr
+            width: 100%
+            margin-top: 27px
+        &_subtitle 
+            font-size: 16px
+            text-align: left
+        &_text 
+            margin-top: 0
+    .mobile
+        padding: 20px 0 40px 0
+        .row 
+            margin-top: 30px
+        &_item 
+            height: 254px
+            padding: 81px 40px 0 40px
+        &_subtitle
+            font-size: 18px
+            line-height: 31px
+        &_plus 
+            bottom: 28px
+            &:hover 
+                &:before, &:after 
+                    background-color: $main-color
+    .choice
+        padding: 25px 0 33px 0
+        min-height: 390px
+        background: #000
+        &_img 
+            margin-top: 35px
+        &_descr 
+            margin-top: 23px
+            color: #ffffff
+            font-size: 17px
+            font-weight: 300
+            line-height: 24px
+    .black 
+        display: none 
+    .hidden-320
+        display: none
+    .require
+        padding: 25px
+        &_block 
+            margin: 30px 0 0 0
+        &_title 
+            font-size: 16px
+        &_list
+            padding-left: 30px
+            margin-top: 5px
+            li 
+                font-size: 14px
+                margin-bottom: 5px
+                line-height: 20px
+        &_descr 
+            font-size: 14px
+            margin-top: 15px
+    .world
+        min-height: 360px
+        padding: 25px 0 30px 0
+        &_link 
+            width: 200px
+            display: block
+            bottom: 30px
+            line-height: 15px
+    footer 
+        padding: 25px 0 20px 0
+    .footer 
+        &_divider
+            width: 253px
+            margin: 0 auto
+        &_wrapper
+            padding-top: 22px
+        &_wrapper > div 
+            margin-bottom: 20px
+            &:nth-child(1)
+                order: 2
+            &:nth-child(2)
+                order: 1
+            &:nth-child(3)
+                order: 3
+        &_links 
+            width: 290px 
+            &_main 
+                padding: 0
+                font-size: 14px
+            &_sub 
+                flex-wrap: wrap
+                justify-content: center
+                a 
+                    margin: 0 7px
+            &_lang 
+                margin-top: 10px
+
