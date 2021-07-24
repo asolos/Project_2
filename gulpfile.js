@@ -1,12 +1,22 @@
 const gulp        = require('gulp');
+<<<<<<< HEAD
 const browserSync = require('browser-sync').create();
 const sass        = require('gulp-sass')(require('sass'));
+=======
+const browserSync = require('browser-sync');
+const sass        = require('gulp-sass');
+>>>>>>> main
 const cleanCSS = require('gulp-clean-css');
 const autoprefixer = require('gulp-autoprefixer');
 const rename = require("gulp-rename");
 
 gulp.task('server', function() {
+<<<<<<< HEAD
     browserSync.init({
+=======
+
+    browserSync({
+>>>>>>> main
         server: {
             baseDir: "src"
         }
